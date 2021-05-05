@@ -133,3 +133,6 @@ dmypy.json
 cache/
 data/
 logs/
+data
+cache
+results

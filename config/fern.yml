@@ -1,29 +1,32 @@
 # Parameters to setup experiment.
 experiment:
   # Unique experiment identifier
-  id: fern
+  id: fern_hr_lr
   # Experiment logs will be stored at "logdir"/"id"
   logdir: logs
   # Seed for random number generators (for repeatability).
-  randomseed: 34  # 8239
+  randomseed: 42
   # Number of training iterations.
   train_iters: 250000
   # Number of training iterations after which to validate.
-  validate_every: 50
+  validate_every: 50000
   # Number of training iterations after which to checkpoint.
-  save_every: 5000
+  save_every: 50000
   # Number of training iterations after which to print progress.
-  print_every: 100
+  print_every: 1000
 
 # Dataset parameters.
 dataset:
   # Type of the dataset (Blender vs LLFF vs DeepVoxels vs something else)
   type: llff
   # Base directory of dataset.
-  basedir: cache/nerf_llff_data/fern
+  basedir: data/nerf_llff_data/fern
   # Optionally, provide a path to the pre-cached dataset dir. This
   # overrides the other dataset options.
-  # cachedir: cache/legocache200
+  cachedir: cache/fern/full
+  cachedir_lr: cache/fern/tiny
+  hr_fps_factor: 10
+  hr_bias: 5
   # Do not use NDC (normalized device coordinates). Usually True for
   # synthetic (Blender) datasets.
   no_ndc: False

@@ -74,7 +74,7 @@ def cache_nerf_dataset(args):
             coords = torch.stack(
                 meshgrid_xy(torch.arange(H).to(device), torch.arange(W).to(device)),
                 dim=-1,
-            )
+            ).long()
             coords = coords.reshape((-1, 2))
             target_s = None
             save_path = None
@@ -197,7 +197,7 @@ if __name__ == "__main__":
         help="Sample all rays for the image. Overrides --num-random-rays.",
     )
     parser.add_argument(
-        "--randomseed", type=int, default=3920, help="Random seeed, for repeatability"
+        "--randomseed", type=int, default=42, help="Random seeed, for repeatability"
     )
     args = parser.parse_args()
 
