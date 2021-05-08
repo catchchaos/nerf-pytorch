@@ -1,9 +1,9 @@
 experiment:
-  id: fern_lr
-  # id: fern_lr_hr
+  id: fern_hr_tiny
+  # id: fern_lr_hr_tiny
   logdir: logs
   randomseed: 42
-  gpu_id: 0
+  gpu_id: 1
   train_iters: 250000
   validate_every: 50000
   save_every: 50000
@@ -15,7 +15,7 @@ dataset:
   no_ndc: False
   near: 0
   far: 1
-  downsample_factor: 16
+  downsample_factor: 4
   # relative_lr_factor: 4
   # hr_fps: 60
   # hr_frequency: 5
@@ -24,9 +24,9 @@ dataset:
 models:
   coarse:
     type: FlexibleNeRFModel
-    num_layers: 8
-    hidden_size: 256
-    skip_connect_every: 4
+    num_layers: 4
+    hidden_size: 64
+    skip_connect_every: 3
     include_input_xyz: True
     num_encoding_fn_xyz: 6
     use_viewdirs: True
@@ -36,9 +36,9 @@ models:
     log_sampling_dir: True
   fine:
     type: FlexibleNeRFModel
-    num_layers: 8
-    hidden_size: 256
-    skip_connect_every: 4
+    num_layers: 4
+    hidden_size: 64
+    skip_connect_every: 3
     num_encoding_fn_xyz: 6
     include_input_xyz: True
     use_viewdirs: True
